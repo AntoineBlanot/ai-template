@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "ai-template"
+version = "0.1.0"
+description = "Description of the project."
+authors = ["Chikara Maeda <antoineblanot@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "core", from = "src" }]
+
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+fire = "^0.6.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.4"
+pytest = "^8.2.0"
+ruff = "^0.4.4"
+pre-commit = "^3.7.1"
+
+[tool.poetry.group.dev]
+optional = true
+
+
+[tool.ruff]
+line-length = 119
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+known-first-party = ["core"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
