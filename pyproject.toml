@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "ai-template"
+name = "package_name"
 version = "0.1.0"
-description = "Description of the project."
-authors = ["Chikara Maeda <antoineblanot@gmail.com>"]
+description = "package_name description."
+authors = ["Chikara Antoine Maeda <antoineblanot@gmail.com>"]
 readme = "README.md"
-packages = [{ include = "core", from = "src" }]
+packages = [{ include = "package_name", from = "src" }]
 
 
 [tool.poetry.dependencies]
@@ -31,7 +31,7 @@ ignore = ["E501"]
 
 [tool.ruff.lint.isort]
 lines-after-imports = 2
-known-first-party = ["core"]
+known-first-party = ["package_name"]
 
 [tool.ruff.format]
 quote-style = "double"

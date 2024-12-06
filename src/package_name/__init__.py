@@ -1,4 +1,4 @@
-"""Package environment utilities."""
+"""package_name."""
 
 from pathlib import Path
 

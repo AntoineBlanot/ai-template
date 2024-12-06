@@ -1,5 +1,8 @@
-# Project
-Description of the project.
+> [!NOTE]
+> Change every `package_name` instance of the template before usage.
+
+# package_name
+package_name description.
 
 ## Installation
 This project uses [Poetry](https://python-poetry.org/docs/#installing-with-the-official-installer) for dependency management and packaging. While you are not required to use Poetry to install or run this project, it is a requirement for development, especially if you want to add new or upgrade existing dependencies.
@@ -8,7 +11,7 @@ This project also depends on Python version **3.10** so make sure you have a Pyt
 
 First, install Poetry as follow:
 ```bash
-curl -sSL https://install.python-poetry.org | <your-python-path> -
+curl -sSL https://install.python-poetry.org | python3.10 -
 ```
 
 Then, you can install the project as follow:
