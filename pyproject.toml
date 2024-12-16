@@ -2,9 +2,13 @@
 name = "package_name"
 version = "0.1.0"
 description = "package_name description."
-authors = ["Chikara Antoine Maeda <antoineblanot@gmail.com>"]
+authors = [
+    "Chikara Antoine Maeda <antoineblanot@gmail.com>",
+]
 readme = "README.md"
-packages = [{ include = "package_name", from = "src" }]
+packages = [
+    { include = "package_name", from = "src" },
+]
 
 
 [tool.poetry.dependencies]
