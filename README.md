@@ -24,3 +24,10 @@ You can run any command in the project as follow:
 ```bash
 poetry run <your-command>
 ```
+
+## Docker
+You can run the package in `Docker` as follow:
+```bash
+docker build -t package_name docker/
+docker run -it -v .:/workspaces/package_name package_name
+```
