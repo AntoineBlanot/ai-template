@@ -1,0 +1,53 @@
+name: Test & Coverage
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+
+jobs:
+  main:
+    runs-on: [self-hosted, ua]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.8.5
+      - name: Install dependencies
+        run: |
+          poetry install --with dev
+      - name: Lint code
+        run: poetry run ruff check --output-format=github
+      - name: Run tests and code coverage
+        run: |
+          poetry run coverage run -m pytest --junitxml tests/unittests.xml
+          poetry run coverage report
+          poetry run coverage xml -o tests/coverage.xml
+      - name: Upload test results
+        uses: mikepenz/action-junit-report@v3
+        with:
+          report_paths: tests/unittests.xml
+          check_name: 'unit-test-results'
+          job_summary: true
+          include_passed: true
+          detailed_summary: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload code coverage results
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-coverage
+          path: tests/coverage.xml
+      - name: Provide a code coverage comment on the PR
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: orgoro/coverage@v3
+        with:
+          coverageFile: tests/coverage.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
