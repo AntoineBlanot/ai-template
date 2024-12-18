@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           poetry install --with dev
-      - name: Lint code
+      - name: Check code format
         run: poetry run ruff check --output-format=github
       - name: Run tests and code coverage
         run: |
